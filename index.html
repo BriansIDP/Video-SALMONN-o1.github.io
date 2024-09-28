@@ -4,115 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Gallery</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
-        .container {
-            max-width: 1200px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1 {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 40px;
-            color: #333;
-        }
-        .video-container {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 40px;
-            overflow: hidden;
-            transition: transform 0.3s;
-        }
-        .video-container:hover {
-            transform: translateY(-5px);
-        }
-        video {
-            width: 100%;
-            border-bottom: 1px solid #eee;
-        }
-        .content {
-            padding: 20px;
-        }
-        .video-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #555;
-        }
-        .video-description {
-            font-size: 16px;
-            color: #666;
-            line-height: 1.6;
-            white-space: pre-wrap; /* Preserves whitespace and enables line breaks */
-        }
-        @media (max-width: 768px) {
-            .video-title {
-                font-size: 20px;
-            }
-            .video-description {
-                font-size: 14px;
-            }
-        }
-
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Video Gallery</h1>
-        <div id="video-gallery"></div>
+        <div class="video-section" id="video-section"></div>
+        <div class="description-section">
+            <div id="description"></div>
+        </div>
     </div>
-
-    <script>
-        // Fetch video data from videos.json
-        fetch('videos.json')
-            .then(response => response.json())
-            .then(data => {
-                const gallery = document.getElementById('video-gallery');
-                data.videos.forEach(video => {
-                    const videoContainer = document.createElement('div');
-                    videoContainer.className = 'video-container';
-
-                    const videoElement = document.createElement('video');
-                    videoElement.controls = true;
-                    const sourceElement = document.createElement('source');
-                    sourceElement.src = `video/${video.filename}`;
-                    sourceElement.type = 'video/mp4';
-                    videoElement.appendChild(sourceElement);
-                    videoElement.textContent = 'Your browser does not support the video tag.';
-
-                    const contentDiv = document.createElement('div');
-                    contentDiv.className = 'content';
-
-                    const videoTitle = document.createElement('div');
-                    videoTitle.className = 'video-title';
-                    videoTitle.textContent = video.title;
-
-                    const videoDescription = document.createElement('div');
-                    videoDescription.className = 'video-description';
-                    videoDescription.textContent = video.description;
-
-                    contentDiv.appendChild(videoTitle);
-                    contentDiv.appendChild(videoDescription);
-
-                    videoContainer.appendChild(videoElement);
-                    videoContainer.appendChild(contentDiv);
-                    gallery.appendChild(videoContainer);
-                });
-            })
-            .catch(error => console.error('Error loading video data:', error));
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
