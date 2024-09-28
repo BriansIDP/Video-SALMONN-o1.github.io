@@ -1,59 +1,33 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
+document.addEventListener("DOMContentLoaded", function () {
+    const videoSection = document.getElementById('video-section');
+    const descriptionSection = document.getElementById('description-section');
 
-header {
-    width: 100%;
-    text-align: center;
-    background-color: #f9f9f9;
-    padding: 10px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+    fetch('videos.json')
+        .then(response => response.json())
+        .then(data => {
+            data.videos.forEach(video => {
+                const videoContainer = document.createElement('div');
+                videoContainer.className = 'video-container';
 
-.container {
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    height: 100%;
-    width: 100%;
-    border-top: 1px solid #ccc;
-}
+                const videoElement = document.createElement('video');
+                videoElement.src = `video/${video.filename}`;
+                videoElement.controls = true;
+                videoElement.preload = 'auto';
+                videoElement.style.width = '100%';
+                videoContainer.appendChild(videoElement);
 
-.video-section {
-    flex: 1;
-    background-color: #f9f9f9;
-    overflow-y: auto;
-    padding: 10px;
-}
+                videoSection.appendChild(videoContainer);
 
-.description-section {
-    flex: 1;
-    background-color: #fff;
-    overflow-y: auto;
-    padding: 10px;
-    border-left: 1px solid #ccc;
-}
+                const descriptionContainer = document.createElement('div');
+                descriptionContainer.className = 'description-container';
 
-.video-container {
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+                const descriptionElement = document.createElement('div');
+                descriptionElement.className = 'description';
+                descriptionElement.textContent = video.description;
+                descriptionContainer.appendChild(descriptionElement);
 
-.description-container {
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.description {
-    white-space: pre-wrap; /* This handles new line characters */
-}
+                descriptionSection.appendChild(descriptionContainer);
+            });
+        })
+        .catch(error => console.error('Error fetching the videos:', error));
+});
