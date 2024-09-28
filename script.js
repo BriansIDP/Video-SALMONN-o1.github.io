@@ -1,44 +1,59 @@
-document.addEventListener("DOMContentLoaded", function () {
-    fetch('videos.json')
-        .then(response => response.json())
-        .then(data => {
-            const videoSection = document.getElementById('video-section');
-            const descriptionContainer = document.getElementById('description');
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 
-            data.videos.forEach(video => {
-                // Create a container for each video and description
-                const videoContainer = document.createElement('div');
-                videoContainer.className = 'video-container';
+header {
+    width: 100%;
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-                // Create video element
-                const videoElement = document.createElement('video');
-                videoElement.src = `video/${video.filename}`;
-                videoElement.controls = true;
-                videoElement.preload = 'auto'; // Use 'none' or 'metadata' to improve loading
+.container {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    border-top: 1px solid #ccc;
+}
 
-                videoElement.style.width = '100%';
-                videoContainer.appendChild(videoElement);
+.video-section {
+    flex: 1;
+    background-color: #f9f9f9;
+    overflow-y: auto;
+    padding: 10px;
+}
 
-                // Add video container to the video section
-                videoSection.appendChild(videoContainer);
+.description-section {
+    flex: 1;
+    background-color: #fff;
+    overflow-y: auto;
+    padding: 10px;
+    border-left: 1px solid #ccc;
+}
 
-                // Create description element
-                const descriptionElement = document.createElement('div');
-                descriptionElement.className = 'description';
-                descriptionElement.textContent = video.description;
-                descriptionContainer.appendChild(descriptionElement);
+.video-container {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-                // Lazy load video on scroll
-                const observer = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            videoElement.preload = 'auto'; // Start loading video when in view
-                            observer.unobserve(entry.target); // Stop observing
-                        }
-                    });
-                });
-                observer.observe(videoElement);
-            });
-        })
-        .catch(error => console.error('Error fetching the videos:', error));
-});
+.description-container {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.description {
+    white-space: pre-wrap; /* This handles new line characters */
+}
