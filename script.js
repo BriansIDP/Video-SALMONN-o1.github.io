@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const videoElement = document.createElement('video');
                 videoElement.src = `video/${video.filename}`;
                 videoElement.controls = true;
-                videoElement.preload = 'none'; // Use 'none' or 'metadata' to improve loading
+                videoElement.preload = 'auto'; // Use 'none' or 'metadata' to improve loading
 
                 videoElement.style.width = '100%';
                 videoContainer.appendChild(videoElement);
