@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 contentRow.appendChild(pairContainer);
 
                 videoElement.addEventListener('loadedmetadata', function() {
-                    descriptionContainer.style.maxHeight = this.clientHeight + 'px';
+                    descriptionContainer.style.height = this.clientHeight + 'px';
                 });
             });
         })
