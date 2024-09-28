@@ -2,14 +2,23 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     display: flex;
+    flex-direction: column; /* Change to column to accommodate the header */
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
+header {
+    width: 100%;
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .container {
     display: flex;
-    height: 80vh;
+    height: 70vh; /* Adjust height to fit header */
     width: 90vw;
     border: 1px solid #ccc;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
