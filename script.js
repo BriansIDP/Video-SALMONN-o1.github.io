@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch('videos.json')
         .then(response => response.json())
         .then(data => {
-            data.videos.forEach(video => {
+            data.videos.forEach(videoData => {
                 const pairContainer = document.createElement('div');
                 pairContainer.className = 'video-description-pair';
 
@@ -12,12 +12,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 videoContainer.className = 'video-section';
 
                 const videoElement = document.createElement('video');
-                videoElement.src = `video/${video.filename}`;
+                videoElement.src = `video/${videoData.filename}`;
                 videoElement.controls = true;
                 videoElement.preload = 'auto';
                 videoElement.style.width = '100%';
                 videoElement.style.height = 'auto';
-                videoElement.style.display = 'block';
+
                 videoContainer.appendChild(videoElement);
 
                 const descriptionContainer = document.createElement('div');
@@ -25,7 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const descriptionElement = document.createElement('div');
                 descriptionElement.className = 'description';
-                descriptionElement.textContent = video.description;
+                descriptionElement.textContent = videoData.description;
+
                 descriptionContainer.appendChild(descriptionElement);
 
                 pairContainer.appendChild(videoContainer);
@@ -34,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 contentRow.appendChild(pairContainer);
 
                 videoElement.addEventListener('loadedmetadata', function() {
-                    descriptionContainer.style.maxHeight = this.videoHeight + 'px';
+                    descriptionContainer.style.maxHeight = this.clientHeight + 'px';
                 });
             });
         })
