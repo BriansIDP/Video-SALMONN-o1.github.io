@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const videoElement = document.createElement('video');
                 videoElement.src = `video/${video.filename}`;
                 videoElement.controls = true;
-                videoElement.preload = 'auto';  
+                videoElement.preload = 'auto';
                 videoElement.style.width = '100%';
                 videoContainer.appendChild(videoElement);
 
