@@ -3,7 +3,7 @@ body {
     margin: 0;
     height: 100vh;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
 }
 
 header {
@@ -21,7 +21,7 @@ header {
 
 .content-row {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     padding: 10px;
 }
 
@@ -45,6 +45,8 @@ header {
     padding: 10px;
     background-color: #fff;
     border-left: 1px solid #ccc;
+    height: 200px;
+    overflow-y: auto;
 }
 
 .video-container video {
@@ -53,5 +55,5 @@ header {
 }
 
 .description {
-    white-space: pre-wrap; 
+    white-space: pre-wrap;
 }
