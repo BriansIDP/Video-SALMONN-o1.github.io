@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 videoElement.controls = true;
                 videoElement.preload = 'auto';
                 videoElement.style.width = '100%';
+                videoElement.style.height = 'auto';
+                videoElement.style.display = 'block';
                 videoContainer.appendChild(videoElement);
 
                 const descriptionContainer = document.createElement('div');
@@ -30,6 +32,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 pairContainer.appendChild(descriptionContainer);
 
                 contentRow.appendChild(pairContainer);
+
+                videoElement.addEventListener('loadedmetadata', function() {
+                    descriptionContainer.style.maxHeight = this.videoHeight + 'px';
+                });
             });
         })
         .catch(error => console.error('Error fetching the videos:', error));
