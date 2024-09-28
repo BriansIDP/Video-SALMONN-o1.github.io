@@ -53,19 +53,11 @@ header {
     background-color: #fff;
     border-left: 1px solid #ccc;
     overflow-y: auto;
-    max-height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.description-container {
-    height: auto;
-    max-height: calc(100% - 20px); /* adjust according to padding */
 }
 
 .description {
     white-space: pre-wrap;
     width: 100%;
-    flex: 1;
+    max-height: 100%;
     overflow-y: auto;
 }
