@@ -1,32 +1,35 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const videoSection = document.getElementById('video-section');
-    const descriptionSection = document.getElementById('description-section');
+    const contentRow = document.getElementById('content-row');
 
     fetch('videos.json')
         .then(response => response.json())
         .then(data => {
             data.videos.forEach(video => {
+                const pairContainer = document.createElement('div');
+                pairContainer.className = 'video-description-pair';
+
                 const videoContainer = document.createElement('div');
-                videoContainer.className = 'video-container';
+                videoContainer.className = 'video-section';
 
                 const videoElement = document.createElement('video');
                 videoElement.src = `video/${video.filename}`;
                 videoElement.controls = true;
-                videoElement.preload = 'auto';
+                videoElement.preload = 'auto';  
                 videoElement.style.width = '100%';
                 videoContainer.appendChild(videoElement);
 
-                videoSection.appendChild(videoContainer);
-
                 const descriptionContainer = document.createElement('div');
-                descriptionContainer.className = 'description-container';
+                descriptionContainer.className = 'description-section';
 
                 const descriptionElement = document.createElement('div');
                 descriptionElement.className = 'description';
                 descriptionElement.textContent = video.description;
                 descriptionContainer.appendChild(descriptionElement);
 
-                descriptionSection.appendChild(descriptionContainer);
+                pairContainer.appendChild(videoContainer);
+                pairContainer.appendChild(descriptionContainer);
+
+                contentRow.appendChild(pairContainer);
             });
         })
         .catch(error => console.error('Error fetching the videos:', error));
