@@ -1,4 +1,6 @@
 # Case Study
+## Video
+The video is [here](whale.mp4).
 
 ## Atomic events
 
