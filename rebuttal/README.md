@@ -64,6 +64,8 @@ The video is [here](whale.mp4).
 2. The overall description is complete.
 
 # Unnatural Case
+Here is an example of a caption with strange and unnatural patterns.
+
 ~~~
 Video Transition Description:
 
