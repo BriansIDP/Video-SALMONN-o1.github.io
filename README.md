@@ -1,3 +1,3 @@
 # Demos of Video-SALMONN 2
 
-Link: [https://video-salmonn-2.github.io/](https://video-salmonn-2.github.io/)
+Link: [https://video-salmonn-o1.github.io/](https://video-salmonn-o1.github.io/)
